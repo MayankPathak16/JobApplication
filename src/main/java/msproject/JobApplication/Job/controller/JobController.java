@@ -12,6 +12,7 @@ import java.util.List;
 public class JobController {
     @Autowired
    private JobService jobService;
+
     //Get Mapping to get all jobs
     @GetMapping("/allJobs")
     public ResponseEntity<List<Job>> getAllJobs(){
@@ -24,8 +25,8 @@ public class JobController {
     }
     //Post Mapping to create job
     @PostMapping("/createJob")
-    public Job createJob(@RequestBody Job job){
-        return jobService.createJob(job);
+    public ResponseEntity<Job> createJob(@RequestBody Job job){
+        return ResponseEntity.ok(jobService.createJob(job)) ;
     }
     //Update Mapping to update job
     @PutMapping("/updateJob/{id}")

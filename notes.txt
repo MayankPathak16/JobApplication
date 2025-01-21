@@ -1,0 +1,47 @@
+1. For extending JpaRepository - Need Spring data Jpa dependency in order to extend.
+1. If we are not using Autowired Annotation that object will not be managed by the Spring container,
+   meaning it won't be automatically injected with any dependencies you've defined in your application
+
+   ---------
+   {
+   "title": "Java Developer",
+   "description": "Java Developer with 3 years of experience",
+   "minSalary": "40000",
+   "maxSalary": "80000",
+   "location": "Pune"
+   }
+   {
+   "title": "Mulesoft Developer",
+   "description": "Mulesoft Developer with 2 years of experience",
+   "minSalary": "45000",
+   "maxSalary": "55000",
+   "location": "Mumbai"
+   }
+   {
+   "title": "Python Developer",
+   "description": "Python Developer with 4 years of experience",
+   "minSalary": "60000",
+   "maxSalary": "90000",
+   "location": "Bangluru"
+   }
+   {
+   "title": "Azure Developer",
+   "description": "Azure Developer with 2 years of experience",
+   "minSalary": "40000",
+   "maxSalary": "60000",
+   "location": "Chennai"
+   }
+   {
+   "title": "AWS Developer",
+   "description": "AWS Developer with 4 years of experience",
+   "minSalary": "70000",
+   "maxSalary": "100000",
+   "location": "Hyderabad"
+   }
+   {
+   "title": "Web Developer",
+   "description": "Web Developer with 2 years of experience",
+   "minSalary": "25000",
+   "maxSalary": "50000",
+   "location": "Delhi"
+   }

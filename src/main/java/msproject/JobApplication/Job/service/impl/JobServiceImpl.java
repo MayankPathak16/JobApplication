@@ -1,12 +1,16 @@
 package msproject.JobApplication.Job.service.impl;
 
+import msproject.JobApplication.Company.entity.Company;
 import msproject.JobApplication.Job.entity.Job;
 import msproject.JobApplication.Job.repository.JobRepository;
 import msproject.JobApplication.Job.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class JobServiceImpl implements JobService {
 
@@ -31,21 +35,16 @@ public class JobServiceImpl implements JobService {
     public Job updateJob(Long id, Job job) {
         //Need to write logic
          //Creating a job object
-        Job existingJob = jobRepository.findById(id).orElse(null);
+       Optional<Job> existingJob = jobRepository.findById(id);
         //Update existing job with new values
-        if(existingJob!=null){
-            existingJob.setTitle(job.getTitle());
-            existingJob.setDescription(job.getDescription());
-            existingJob.setMinSalary(job.getMinSalary());
-            existingJob.setMaxSalary(job.getMaxSalary());
-            existingJob.setLocation(job.getLocation());
-        }
+            Job updatedJob = jobRepository.findById(id).orElse(null);
+            updatedJob.setTitle(job.getTitle());
+            updatedJob.setDescription(job.getDescription());
+            updatedJob.setMinSalary(job.getMinSalary());
+            updatedJob.setMaxSalary(job.getMaxSalary());
+            updatedJob.setLocation(job.getLocation());
+           return  jobRepository.save(updatedJob);
 
-
-        //Save the updated job object
-        jobRepository.save(existingJob);
-
-        return null;
     }
 
     @Override

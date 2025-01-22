@@ -3,6 +3,8 @@ package msproject.JobApplication.Job.controller;
 import msproject.JobApplication.Job.entity.Job;
 import msproject.JobApplication.Job.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +28,8 @@ public class JobController {
     //Post Mapping to create job
     @PostMapping("/createJob")
     public ResponseEntity<Job> createJob(@RequestBody Job job){
-        return ResponseEntity.ok(jobService.createJob(job)) ;
+        Job savedJob = jobService.createJob(job);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedJob);
     }
     //Update Mapping to update job
     @PutMapping("/updateJob/{id}")
@@ -35,8 +38,9 @@ public class JobController {
     }
     //Delete Mapping to delete job
     @DeleteMapping("/deleteJob/{id}")
-    public void deleteJob(@PathVariable(value = "id") Long id){
+    public ResponseEntity<Void> deleteJob(@PathVariable(value = "id") Long id){
         jobService.deleteJob(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

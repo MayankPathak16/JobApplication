@@ -1,8 +1,6 @@
 package msproject.JobApplication.Company.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import msproject.JobApplication.Job.entity.Job;
 import msproject.JobApplication.Review.entity.Review;
@@ -15,8 +13,10 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "company")
+@Table(name = "companydb")
 public class Company {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;

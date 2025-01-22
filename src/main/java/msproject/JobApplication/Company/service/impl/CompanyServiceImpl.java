@@ -3,6 +3,7 @@ package msproject.JobApplication.Company.service.impl;
 import msproject.JobApplication.Company.entity.Company;
 import msproject.JobApplication.Company.repository.CompanyRepository;
 import msproject.JobApplication.Company.service.CompanyService;
+import msproject.JobApplication.Job.service.impl.JobServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,19 +45,15 @@ public class CompanyServiceImpl implements CompanyService {
     /**
      * Method 04: Update the company
      *
-     * @param company
+     * @param company, id
      */
     @Override
     public Company updateCompany(Company company, Long id) {
-        Company existingCompany = companyRepository.findById(id).orElse(null);
-        if(existingCompany != null) {
-            existingCompany.setId(company.getId());
+        return companyRepository.findById(id).map(existingCompany -> {
             existingCompany.setName(company.getName());
             existingCompany.setDescription(company.getDescription());
-        }
-
-
-        return companyRepository.save(existingCompany);
+            return companyRepository.save(existingCompany);
+        }).orElseThrow(()-> new JobServiceImpl.ResourceNotFoundException("Company not found with id: " + id));
     }
 
 }

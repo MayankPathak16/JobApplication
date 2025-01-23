@@ -21,4 +21,16 @@ public interface ReviewService {
      *Method 02: Add a review
      */
     boolean addReview(Long companyId, Review review);
+    /**
+     * Method 03:
+     */
+    Review getReview(Long companyId,Long reviewId);
+    /**
+     * Method 04:
+     */
+    boolean updateReview(Long companyId,Long reviewId,Review review);
+    /**
+     * Method 05:
+     */
+    boolean deleteReview(Long companyId,Long reviewId);
 }

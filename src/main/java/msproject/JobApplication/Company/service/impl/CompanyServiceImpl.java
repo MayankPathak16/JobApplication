@@ -56,4 +56,18 @@ public class CompanyServiceImpl implements CompanyService {
         }).orElseThrow(()-> new JobServiceImpl.ResourceNotFoundException("Company not found with id: " + id));
     }
 
+    /**
+     * Method 05: Delete the company
+     *
+     * @param id
+     */
+    @Override
+    public void deleteCompany(Long id) {
+        if(companyRepository.existsById(id)){
+            companyRepository.deleteById(id);
+        }else{
+            throw new JobServiceImpl.ResourceNotFoundException("Job not found with id: " + id);
+        }
+    }
+
 }

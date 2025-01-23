@@ -22,4 +22,8 @@ public interface CompanyService {
      * Method 04: Update the company
      */
     Company updateCompany(Company company, Long id);
+    /**
+     * Method 05: Delete the company
+     */
+    void deleteCompany(Long id);
 }

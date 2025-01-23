@@ -1,11 +1,11 @@
 package msproject.JobApplication.Review.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import msproject.JobApplication.Company.entity.Company;
+import org.springframework.boot.autoconfigure.web.WebProperties;
+import org.springframework.http.HttpStatus;
 
 @Data
 @NoArgsConstructor
@@ -13,8 +13,10 @@ import msproject.JobApplication.Company.entity.Company;
 @Setter
 @Getter
 @Entity
-@Table(name = "review")
+@Table(name = "reviewdb")
 public class Review {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;

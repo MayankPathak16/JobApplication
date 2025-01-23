@@ -21,10 +21,11 @@ public class Company {
     private String name;
     private String description;
     //One company has many jobs-one means company means ye class. many job jha se mapping hora he
-    @OneToMany
+    //mappedby me jo company die he wo tera job me dalna he mapping ke liye
+    @OneToMany(mappedBy = "company")
     private List<Job> jobs;
     //One company has list of reviews
-    @OneToMany
+    @OneToMany(mappedBy = "company")
     private List<Review> reviews;
 
 
